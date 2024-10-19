@@ -1,5 +1,4 @@
-import { createSlice, Dispatch } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 
 // Define the interface for a Card
 interface Product {
