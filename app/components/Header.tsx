@@ -9,7 +9,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   useDisclosure,
-  Checkbox,
   Input,
   Link,
   Button,
@@ -26,12 +25,12 @@ import { CiLink } from "react-icons/ci";
 import { useDispatch } from "../lib/store";
 import { addResource } from "../lib/slices/mainSlice";
 import { toastSuccess } from "./Toast";
-import { randomUUID } from "crypto";
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const menuItems = ["Home", "Add Product"];
+
   function generateUUID() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
       /[xy]/g,

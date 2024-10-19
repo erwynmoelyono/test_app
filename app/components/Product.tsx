@@ -1,27 +1,19 @@
 "use client";
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Image,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Spinner,
   Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalFooter,
   Input,
-  Link,
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
+
 import { useSelector, useDispatch } from "../lib/store";
 import { deleteResource, updateResource } from "../lib/slices/mainSlice";
 import { useEffect, useState } from "react";
@@ -96,7 +88,7 @@ export default function Product() {
     changeData("price", i?.price);
     changeData("image", i?.image);
   }
-  function save(id: string) {
+  function save() {
     console.log(product);
     dispatch(updateResource(product));
     onClose();
@@ -187,7 +179,7 @@ export default function Product() {
                 <Button
                   color="primary"
                   onPress={() => {
-                    save(product.id);
+                    save();
                   }}
                 >
                   New
@@ -233,7 +225,7 @@ export default function Product() {
             className="block w-full h-10 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search Product Name ..."
             value={query}
-            onChange={(e: any) => {
+            onChange={(e) => {
               setQuery(e.target.value.toLowerCase());
             }}
           />
@@ -271,8 +263,8 @@ export default function Product() {
               (i) =>
                 !query || i.name.toLowerCase().includes(query.toLowerCase())
             )
-            .map((i: any, index: number) => (
-              <AOS key={i.name}>
+            .map((i: Product, index: number) => (
+              <AOS key={index}>
                 <div
                   className="w-62 h-96 bg-white text-black dark:bg-slate-900 dark:text-white shadow-md rounded-xl shadow-gray-400 dark:shadow-gray-600 dark:hover:shadow-gray-400 hover:shadow-gray-600 duration-250  hover:scale-105 hover:shadow-xl hover:cursor-pointer
                     text-center flex justify-center flex-col items-center align-middle"

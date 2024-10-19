@@ -1,10 +1,7 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import DataTable, {
-  createTheme,
-  ExpanderComponentProps,
-} from "react-data-table-component";
+import DataTable, { createTheme } from "react-data-table-component";
 interface pokemonList {
   name: string;
   url: string;
@@ -14,13 +11,13 @@ export default function PokemonData() {
   const columns = [
     {
       name: "Name",
-      selector: (row: any) => row.name,
+      selector: (row: pokemonList) => row.name,
       sortable: true,
     },
     {
       name: "URL",
       sortable: true,
-      selector: (row: any) => row.url,
+      selector: (row: pokemonList) => row.url,
     },
   ];
   function fetchData() {
